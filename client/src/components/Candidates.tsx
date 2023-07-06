@@ -47,7 +47,8 @@ const Candidates = ({ provider }: CandidatesProps) => {
   const getAllCandidates = async () => {
     const signer = provider.getSigner();
     const contract = new ethers.Contract(contractAddress, contractABI, signer);
-    const candidatesContract = await contract.getAllVotesOfCandiates();
+    console.log(contract);
+    const candidatesContract = await contract.getAllVotesOfCandidates();
     const candidatesCount = candidatesContract.length;
     const candidates: Candidate[] = [];
 
@@ -91,6 +92,7 @@ const Candidates = ({ provider }: CandidatesProps) => {
       setCheckedCandidateIndex(null);
     } catch (error) {
       setError("Failed to cast vote.");
+      setCheckedCandidateIndex(null);
     }
     isVotedCheck();
   };
@@ -105,6 +107,7 @@ const Candidates = ({ provider }: CandidatesProps) => {
     }
   };
 
+  console.log(candidates);
   if (candidates.length === 0 || isVoted === null) return <div>Loading...</div>;
 
   return (
