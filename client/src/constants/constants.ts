@@ -26,7 +26,7 @@ export const contractABI = [
   },
   {
     inputs: [],
-    name: "getAllVotesOfCandiates",
+    name: "getAllVotesOfCandidates",
     outputs: [
       {
         components: [
