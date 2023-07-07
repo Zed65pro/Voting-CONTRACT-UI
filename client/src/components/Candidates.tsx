@@ -22,6 +22,7 @@ const Candidates = ({ provider }: CandidatesProps) => {
   >(null);
   const [isVoted, setIsVoted] = useState<boolean | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState<string | null>(null);
 
   useEffect(() => {
     if (!window.ethereum) return;
@@ -90,6 +91,7 @@ const Candidates = ({ provider }: CandidatesProps) => {
       setIsVoted(true);
       getAllCandidates();
       setCheckedCandidateIndex(null);
+      setSuccess("Successfully voted!");
     } catch (error) {
       setError("Failed to cast vote.");
       setCheckedCandidateIndex(null);
@@ -118,6 +120,7 @@ const Candidates = ({ provider }: CandidatesProps) => {
       >
         Vote
       </button>
+      {success && <p className="text-green-600 mt-4">{success}</p>}
       {error && <p className="text-red-600 mt-4">{error}</p>}
       <CandidateList
         candidates={candidates}
