@@ -19,7 +19,6 @@ const Home = ({ account, provider, logout }: HomeProps) => {
       <span className="text-lg text-gray-800">Account: {account}</span>
 
       <Status provider={provider} />
-
       <Timer provider={provider} />
       <Candidates provider={provider} />
     </div>
