@@ -25,7 +25,7 @@ const CandidateList = ({
           {candidates.map((candidate, index) => (
             <tr
               key={index}
-              className={index === checkedCandidateIndex ? "bg-blue-200" : ""}
+              className={index === checkedCandidateIndex ? "bg-blue-300" : ""}
             >
               <td className="border px-4 py-2">{candidate.name}</td>
               <td className="border px-4 py-2">{candidate.voteCount}</td>

@@ -48,7 +48,6 @@ const Candidates = ({ provider }: CandidatesProps) => {
   const getAllCandidates = async () => {
     const signer = provider.getSigner();
     const contract = new ethers.Contract(contractAddress, contractABI, signer);
-    console.log(contract);
     const candidatesContract = await contract.getAllVotesOfCandidates();
     const candidatesCount = candidatesContract.length;
     const candidates: Candidate[] = [];
@@ -109,13 +108,12 @@ const Candidates = ({ provider }: CandidatesProps) => {
     }
   };
 
-  console.log(candidates);
   if (candidates.length === 0 || isVoted === null) return <div>Loading...</div>;
 
   return (
     <>
       <button
-        className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+        className="bg-blue-800 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
         onClick={castVote}
       >
         Vote

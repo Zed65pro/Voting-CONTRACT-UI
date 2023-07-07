@@ -18,15 +18,25 @@ const App = () => {
   };
 
   useEffect(() => {
+    const handleRefreshPage = async () => {
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      setProvider(provider);
+      await provider.send("eth_requestAccounts", []);
+    };
+
+    if (account === null) {
+      const storedAccount = localStorage.getItem(LOCAL_STORAGE_KEY);
+      if (storedAccount) {
+        setAccount(storedAccount);
+        handleRefreshPage();
+      }
+    }
+  }, [account]);
+
+  useEffect(() => {
     if (!window.ethereum) return;
 
     window.ethereum.on("accountsChanged", handleAccountChange);
-    const storedAccount = localStorage.getItem(LOCAL_STORAGE_KEY);
-
-    if (storedAccount) {
-      setAccount(storedAccount);
-    }
-
     return () => {
       window.ethereum.removeListener("accountsChanged", handleAccountChange);
     };

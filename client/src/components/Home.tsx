@@ -12,8 +12,8 @@ interface HomeProps {
 
 const Home = ({ account, provider, logout }: HomeProps) => {
   return (
-    <div className="flex flex-col items-center pt-5 h-screen bg-gray-200">
-      <h1 className="text-4xl font-bold text-blue-600 mb-4">
+    <div className="flex flex-col items-center pt-5 h-screen bg-gray-300">
+      <h1 className="text-4xl font-bold text-blue-800 mb-4">
         Welcome, people of high intellect
       </h1>
       <span className="text-lg text-gray-800">Account: {account}</span>
