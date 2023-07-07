@@ -34,16 +34,16 @@ const Candidates = ({ provider }: CandidatesProps) => {
     };
   });
 
+  useEffect(() => {
+    getAllCandidates();
+    isVotedCheck();
+  }, []);
+
   const handleAccountChange = async (accounts: string[]) => {
     setError(null);
     isVotedCheck();
     setCheckedCandidateIndex(null);
   };
-
-  useEffect(() => {
-    getAllCandidates();
-    isVotedCheck();
-  }, []);
 
   const getAllCandidates = async () => {
     const signer = provider.getSigner();
